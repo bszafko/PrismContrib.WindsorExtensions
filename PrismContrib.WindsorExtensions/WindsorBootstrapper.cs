@@ -9,6 +9,7 @@ using Microsoft.Practices.Prism;
 using Castle.Windsor;
 using Castle.MicroKernel;
 using Castle.Core;
+using Microsoft.Practices.Prism.Regions.Behaviors;
 
 namespace PrismContrib.WindsorExtensions
 {
@@ -152,17 +153,21 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournalEntry), typeof(RegionNavigationJournalEntry), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournal), typeof(RegionNavigationJournal), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationService), typeof(RegionNavigationService), false);
-                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(RegionNavigationContentLoader), true);                
-
+                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(RegionNavigationContentLoader), true);
+                RegisterTypeIfMissing(typeof(DelayedRegionCreationBehavior), typeof(DelayedRegionCreationBehavior), false);                
+                
                 // register region adapters
                 Container.Register(Castle.MicroKernel.Registration.AllTypes
                     .FromAssemblyContaining<IRegionAdapter>()
-                    .Where(t => typeof(IRegionAdapter).IsAssignableFrom(t)));
+                    .Where(t => typeof(IRegionAdapter).IsAssignableFrom(t))
+                    .Configure(c=>c.LifeStyle.Transient));
 
                 // register region behaviors
                 Container.Register(Castle.MicroKernel.Registration.AllTypes
                     .FromAssemblyContaining<IRegionBehavior>()
-                    .Where(t => typeof(IRegionBehavior).IsAssignableFrom(t)));
+                    .Where(t => typeof(IRegionBehavior).IsAssignableFrom(t))
+                    .Configure(c=>c.LifeStyle.Transient));
+
             }
         }
 
