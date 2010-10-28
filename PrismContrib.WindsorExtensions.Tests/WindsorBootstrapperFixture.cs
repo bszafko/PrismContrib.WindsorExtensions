@@ -115,13 +115,14 @@ namespace PrismContrib.WindsorExtensions.Tests
             var bootstrapper = new DefaultWindsorBootstrapper();
             bootstrapper.Run();
 
-            var actual1 = bootstrapper.BaseContainer.Resolve<INavigationTargetHandler>();
-            var actual2 = bootstrapper.BaseContainer.Resolve<INavigationTargetHandler>();
+            var actual1 = bootstrapper.BaseContainer.Resolve<IRegionNavigationContentLoader>();
+            var actual2 = bootstrapper.BaseContainer.Resolve<IRegionNavigationContentLoader>();
 
             Assert.IsNotNull(actual1);
             Assert.IsNotNull(actual2);
             Assert.AreSame(actual1, actual2);
         }
+
 
         [TestMethod]
         public void RegisterFrameworkExceptionTypesShouldRegisterActivationException()

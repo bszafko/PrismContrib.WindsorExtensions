@@ -152,7 +152,7 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournalEntry), typeof(RegionNavigationJournalEntry), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationJournal), typeof(RegionNavigationJournal), false);
                 RegisterTypeIfMissing(typeof(IRegionNavigationService), typeof(RegionNavigationService), false);
-                RegisterTypeIfMissing(typeof(INavigationTargetHandler), typeof(LocatorNavigationTargetHandler), true);
+                RegisterTypeIfMissing(typeof(IRegionNavigationContentLoader), typeof(RegionNavigationContentLoader), true);                
 
                 // register region adapters
                 Container.Register(Castle.MicroKernel.Registration.AllTypes
