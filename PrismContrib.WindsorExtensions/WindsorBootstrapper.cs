@@ -10,6 +10,8 @@ using Castle.Windsor;
 using Castle.MicroKernel;
 using Castle.Core;
 using Microsoft.Practices.Prism.Regions.Behaviors;
+using CommonServiceLocator.WindsorAdapter;
+using Castle.MicroKernel.Registration;
 
 namespace PrismContrib.WindsorExtensions
 {
@@ -132,17 +134,14 @@ namespace PrismContrib.WindsorExtensions
         /// </summary>
         protected virtual void ConfigureContainer()
         {
-            Container.Kernel.AddComponentInstance<ILoggerFacade>(Logger);
+            Container.Register(Component.For<ILoggerFacade>().Instance(Logger));
 
-            Container.Kernel.AddComponentInstance<IModuleCatalog>(ModuleCatalog);
+            Container.Register(Component.For<IModuleCatalog>().Instance(ModuleCatalog));
 
             if (useDefaultConfiguration)
             {
-                Container.Register(Castle.MicroKernel.Registration.Component
-                    .For<IWindsorContainer>()
-                    .Instance(Container)
-                    .LifeStyle.Singleton);
-                RegisterTypeIfMissing(typeof(IServiceLocator), typeof(WindsorServiceLocatorAdapter), true);
+                Container.Register(Component.For<IWindsorContainer>().Instance(Container));
+                RegisterTypeIfMissing(typeof(IServiceLocator), typeof(WindsorServiceLocator), true);
                 RegisterTypeIfMissing(typeof(IModuleInitializer), typeof(ModuleInitializer), true);
                 RegisterTypeIfMissing(typeof(IModuleManager), typeof(ModuleManager), true);
                 RegisterTypeIfMissing(typeof(RegionAdapterMappings), typeof(RegionAdapterMappings), true);
@@ -157,15 +156,11 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(DelayedRegionCreationBehavior), typeof(DelayedRegionCreationBehavior), false);                
                 
                 // register region adapters
-                Container.Register(Castle.MicroKernel.Registration.AllTypes
-                    .FromAssemblyContaining<IRegionAdapter>()
-                    .Where(t => typeof(IRegionAdapter).IsAssignableFrom(t))
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>()
                     .Configure(c=>c.LifeStyle.Transient));
 
                 // register region behaviors
-                Container.Register(Castle.MicroKernel.Registration.AllTypes
-                    .FromAssemblyContaining<IRegionBehavior>()
-                    .Where(t => typeof(IRegionBehavior).IsAssignableFrom(t))
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>()
                     .Configure(c=>c.LifeStyle.Transient));
 
             }
