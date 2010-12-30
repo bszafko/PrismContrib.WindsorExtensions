@@ -12,13 +12,12 @@ using PrismContrib.WindsorExtensions;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Microsoft.Practices.Prism.UnityExtensions.Tests;
 using Castle.Windsor;
 
 namespace PrismContrib.WindsorExtensions.Tests
 {
     [TestClass]
-    public class WindsorBootstrapperFixture : BootstrapperFixtureBase
+    public class WindsorBootstrapperFixture 
     {
         [TestMethod]
         public void ContainerDefaultsToNull()
