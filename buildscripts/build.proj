@@ -1,0 +1,69 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="default">
+	<PropertyGroup>
+		<BaseDir>$(MSBuildProjectDirectory)\..</BaseDir>
+		<Configuration Condition="'$(Configuration)'==''" >Release</Configuration>
+		<BuildDir>$(BaseDir)\build</BuildDir>
+		<OutputDir>$(BuildDir)\$(Configuration)</OutputDir>
+		<PackageDir>$(BuildDir)\Packages</PackageDir>		
+		<SolutionFile>$(BaseDir)\PrismContrib.WindsorExtensions.sln</SolutionFile>
+		<TestAssembly>$(BaseDir)\PrismContrib.WindsorExtensions.Tests\bin\$(Configuration)\PrismContrib.WindsorExtensions.Tests.dll</TestAssembly>		
+		<MSBuildExtensions>$(BaseDir)\packages\msbuild\msbuild.community.tasks.dll</MSBuildExtensions>
+	</PropertyGroup>
+  <UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.Zip" />
+	<UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.XmlUpdate" />
+
+	<Target Name="default" DependsOnTargets="Compile; Test; Deploy; Package" />
+
+	<Target Name="Compile">
+		<MSBuild Projects="$(SolutionFile)" Properties="Configuration=$(Configuration)"  />
+	</Target>
+
+	<Target Name="Test">
+    <Exec Command='"$(VS100COMNTOOLS)..\IDE\mstest.exe" /testcontainer:"$(TestAssembly)"' />
+	</Target>
+
+	<Target Name="Package" DependsOnTargets="Deploy; PackageZip; PackageNuPack" />
+
+	<Target Name="Deploy">
+		<RemoveDir Directories="$(BuildDir)" />
+
+		<ItemGroup>
+			<MainBinaries Include="$(BaseDir)\PrismContrib.WindsorExtensions\bin\$(Configuration)\**\PrismContrib*.*" />
+		</ItemGroup>
+
+		<!-- Copy to the output directory -->
+		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(OutputDir)\Prism.WindsorExtensions\%(RecursiveDir)"  />
+	</Target>
+
+	<Target Name="PackageZip">
+		<ItemGroup>
+			<FilesToZip Include="$(OutputDir)\**\*.*" />
+		</ItemGroup>
+		<Zip Files="@(FilesToZip)" ZipFileName="$(BuildDir)\Prism.WindsorExtensions.zip" WorkingDirectory="$(OutputDir)" />
+	</Target>
+
+	<Target Name="PackageNuPack" DependsOnTargets="Deploy">
+		<!-- First copy the nuspec template files to the package dir -->
+		<Copy SourceFiles="$(MSBuildProjectDirectory)\Prism.WindsorExtensions.nuspec" DestinationFolder="$(PackageDir)\temp\Prism.WindsorExtensions" />
+
+		<!-- Copy the source files to the package dir -->
+		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)\temp\Prism.WindsorExtensions\lib\NET40\%(RecursiveDir)" />
+
+		<!-- Get the version number of the main FV assembly to insert into the nuspec files -->
+		<GetAssemblyIdentity AssemblyFiles="$(OutputDir)\Prism.WindsorExtensions\PrismContrib.WindsorExtensions.dll">
+			<Output TaskParameter="Assemblies" ItemName="AsmInfo" />
+		</GetAssemblyIdentity>
+
+		<!-- insert the version number into the nuspec files -->
+		<XmlUpdate
+		  Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
+			XmlFileName="$(PackageDir)\temp\Prism.WindsorExtensions\Prism.WindsorExtensions.nuspec"
+			XPath="/package/metadata/version"
+			Value="%(AsmInfo.Version)" />
+
+		<Exec WorkingDirectory="$(BuildDir)\Packages" 
+					Command="$(BaseDir)\packages\NuGet.CommandLine.1.0.11220.26\Tools\nuget.exe pack $(PackageDir)\temp\Prism.WindsorExtensions\Prism.WindsorExtensions.nuspec" />
+
+		<!--<RemoveDir Directories="$(PackageDir)\temp" />-->
+	</Target>
+</Project>

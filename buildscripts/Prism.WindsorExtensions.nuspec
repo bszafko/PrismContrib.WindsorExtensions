@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Prism.WindsorExtensions</id>
+    <version>1.0.0.0</version>
+    <authors>Bartek Szafko</authors>
+    <projectUrl>http://github.com/bszafko/PrismContrib.WindsorExtensions</projectUrl>
+    <description>A Windsor extensions for PRISM</description>
+    <summary>A Windsor extensions for PRISM</summary>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Prism" version="4.0" />
+      <dependency id="Castle.Windsor" version="2.5.2" />
+      <dependency id="CommonServiceLocator" version="1.0"/>
+      <dependency id="CommonServiceLocator.WindsorAdapter" version="1.0"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\**" target="lib" />
+  </files>
+</package>
