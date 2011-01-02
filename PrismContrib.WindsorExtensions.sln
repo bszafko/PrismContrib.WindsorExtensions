@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop", "PrismContrib.WindsorExtensions\PrismContrib.WindsorExtensions.Desktop.csproj", "{84597EFB-157E-44ED-8FF1-500F5A8D4C20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop", "src\Desktop\PrismContrib.WindsorExtensions\PrismContrib.WindsorExtensions.Desktop.csproj", "{84597EFB-157E-44ED-8FF1-500F5A8D4C20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop.Tests", "PrismContrib.WindsorExtensions.Tests\PrismContrib.WindsorExtensions.Desktop.Tests.csproj", "{43A17AC2-119E-494B-BA5C-297F1E2B23A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Desktop.Tests", "src\Desktop\PrismContrib.WindsorExtensions.Tests\PrismContrib.WindsorExtensions.Desktop.Tests.csproj", "{43A17AC2-119E-494B-BA5C-297F1E2B23A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

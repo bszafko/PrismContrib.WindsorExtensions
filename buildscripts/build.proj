@@ -6,7 +6,7 @@
 		<OutputDir>$(BuildDir)\$(Configuration)</OutputDir>
 		<PackageDir>$(BuildDir)\Packages</PackageDir>		
 		<SolutionFile>$(BaseDir)\PrismContrib.WindsorExtensions.sln</SolutionFile>
-		<TestAssembly>$(BaseDir)\PrismContrib.WindsorExtensions.Tests\bin\$(Configuration)\PrismContrib.WindsorExtensions.Tests.dll</TestAssembly>		
+		<TestAssembly>$(BaseDir)\src\Desktop\PrismContrib.WindsorExtensions.Tests\bin\$(Configuration)\PrismContrib.WindsorExtensions.Tests.dll</TestAssembly>		
 		<MSBuildExtensions>$(BaseDir)\packages\msbuild\msbuild.community.tasks.dll</MSBuildExtensions>
 	</PropertyGroup>
   <UsingTask AssemblyFile="$(MSBuildExtensions)" TaskName="MSBuild.Community.Tasks.Zip" />
@@ -28,7 +28,7 @@
 		<RemoveDir Directories="$(BuildDir)" />
 
 		<ItemGroup>
-			<MainBinaries Include="$(BaseDir)\PrismContrib.WindsorExtensions\bin\$(Configuration)\**\PrismContrib*.*" />
+			<MainBinaries Include="$(BaseDir)\src\Desktop\PrismContrib.WindsorExtensions\bin\$(Configuration)\**\PrismContrib*.*" />
 		</ItemGroup>
 
 		<!-- Copy to the output directory -->
