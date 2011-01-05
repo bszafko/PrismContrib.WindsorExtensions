@@ -10,8 +10,8 @@ using Castle.Windsor;
 using Castle.MicroKernel;
 using Castle.Core;
 using Microsoft.Practices.Prism.Regions.Behaviors;
-using CommonServiceLocator.WindsorAdapter;
 using Castle.MicroKernel.Registration;
+using CommonServiceLocator.WindsorAdapter;
 
 namespace PrismContrib.WindsorExtensions
 {

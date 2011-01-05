@@ -11,7 +11,6 @@ using Microsoft.Practices.Prism.Regions;
 using PrismContrib.WindsorExtensions;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Castle.Windsor;
 
 namespace PrismContrib.WindsorExtensions.Tests
