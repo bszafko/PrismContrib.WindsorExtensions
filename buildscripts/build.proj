@@ -29,10 +29,13 @@
 
 		<ItemGroup>
 			<MainBinaries Include="$(BaseDir)\src\Desktop\PrismContrib.WindsorExtensions\bin\$(Configuration)\**\PrismContrib*.*" />
+		  <SilverlightBinaries Include="$(BaseDir)\src\Silverlight\PrismContrib.WindsorExtensions.Silverlight\bin\$(Configuration)\PrismContrib.WindsorExtensions.*"/>
+		  <SilverlightBinaries Include="$(BaseDir)\src\Silverlight\PrismContrib.WindsorExtensions.Silverlight\bin\$(Configuration)\Microsoft.Practices.ServiceLocation.*"/>
 		</ItemGroup>
 
 		<!-- Copy to the output directory -->
 		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(OutputDir)\Prism.WindsorExtensions\%(RecursiveDir)"  />
+		<Copy SourceFiles="@(SilverlightBinaries)" DestinationFolder="$(OutputDir)\Prism.WindsorExtensions.Silverlight\%(RecursiveDir)"  />
 	</Target>
 
 	<Target Name="PackageZip">
@@ -48,6 +51,7 @@
 
 		<!-- Copy the source files to the package dir -->
 		<Copy SourceFiles="@(MainBinaries)" DestinationFolder="$(PackageDir)\temp\Prism.WindsorExtensions\lib\NET40\%(RecursiveDir)" />
+		<Copy SourceFiles="@(SilverlightBinaries)" DestinationFolder="$(PackageDir)\temp\Prism.WindsorExtensions\lib\SL4\%(RecursiveDir)" />
 
 		<!-- Get the version number of the main FV assembly to insert into the nuspec files -->
 		<GetAssemblyIdentity AssemblyFiles="$(OutputDir)\Prism.WindsorExtensions\PrismContrib.WindsorExtensions.dll">

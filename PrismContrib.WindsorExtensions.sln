@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismContrib.WindsorExtensions.Silverlight.Tests", "src\Silverlight\PrismContrib.WindsorExtensions.Silverlight.Tests\PrismContrib.WindsorExtensions.Silverlight.Tests.csproj", "{EF389B92-96C7-40EC-9829-C215AF0F06DE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B92F2C34-3C38-48F3-BBCB-A322B907DAB8}"
+	ProjectSection(SolutionItems) = preProject
+		src\ProjectInfo.cs = src\ProjectInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

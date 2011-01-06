@@ -15,7 +15,4 @@
       <dependency id="CommonServiceLocator.WindsorAdapter" version="1.0"/>
     </dependencies>
   </metadata>
-  <files>
-    <file src="lib\**" target="lib" />
-  </files>
 </package>
