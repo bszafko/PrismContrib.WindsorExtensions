@@ -60,9 +60,10 @@
 
 		<!-- insert the version number into the nuspec files -->
 		<XmlUpdate
+      Prefix="n"
 		  Namespace="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
 			XmlFileName="$(PackageDir)\temp\Prism.WindsorExtensions\Prism.WindsorExtensions.nuspec"
-			XPath="/package/metadata/version"
+			XPath="//package/n:metadata/n:version"
 			Value="%(AsmInfo.Version)" />
 
 		<Exec WorkingDirectory="$(BuildDir)\Packages" 

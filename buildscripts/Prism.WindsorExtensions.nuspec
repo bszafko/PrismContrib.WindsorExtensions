@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<package>
-  <metadata>
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata  xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Prism.WindsorExtensions</id>
     <version>1.0.0.0</version>
     <authors>Bartek Szafko</authors>
     <projectUrl>http://github.com/bszafko/PrismContrib.WindsorExtensions</projectUrl>
-    <description>A Windsor extensions for PRISM</description>
-    <summary>A Windsor extensions for PRISM</summary>
+    <description>A Castle Windsor extensions for PRISM</description>
+    <summary>Use these extensions to Prism.Core to build Prism applications based on the Castle windsor.</summary>
     <language>en-US</language>
     <dependencies>
       <dependency id="Prism" version="4.0" />
