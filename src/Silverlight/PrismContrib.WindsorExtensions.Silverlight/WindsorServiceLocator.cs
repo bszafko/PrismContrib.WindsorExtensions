@@ -42,7 +42,7 @@ namespace CommonServiceLocator.WindsorAdapter
         {
             if (!String.IsNullOrEmpty(key))
             {
-                return _windsorContainer.Resolve(serviceType, key);
+                return _windsorContainer.Resolve(key, serviceType);
             }
             return _windsorContainer.Resolve(serviceType);
         }
