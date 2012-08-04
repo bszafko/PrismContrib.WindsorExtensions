@@ -121,7 +121,7 @@ namespace PrismContrib.WindsorExtensions
             base.RegisterFrameworkExceptionTypes();
 
             ExceptionExtensions.RegisterFrameworkExceptionType(
-                typeof(Castle.Windsor.InitializationException));
+                typeof(Castle.Windsor.Configuration.Interpreters.ConfigurationProcessingException));
 
             ExceptionExtensions.RegisterFrameworkExceptionType(
                 typeof(Castle.MicroKernel.ComponentNotFoundException));
@@ -157,11 +157,11 @@ namespace PrismContrib.WindsorExtensions
                 
                 // register region adapters
                 Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>()
-                    .Configure(c=>c.LifeStyle.Transient));
+                    .Configure(c=>c.LifestyleTransient()));
 
                 // register region behaviors
                 Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>()
-                    .Configure(c=>c.LifeStyle.Transient));
+                    .Configure(c => c.LifestyleTransient()));
 
             }
         }
