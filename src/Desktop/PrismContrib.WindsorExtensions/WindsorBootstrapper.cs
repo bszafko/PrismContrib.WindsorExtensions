@@ -156,12 +156,10 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(DelayedRegionCreationBehavior), typeof(DelayedRegionCreationBehavior), false);                
                 
                 // register region adapters
-                Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>()
-                    .Configure(c=>c.LifeStyle.Transient));
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>().LifestyleTransient());
 
                 // register region behaviors
-                Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>()
-                    .Configure(c=>c.LifeStyle.Transient));
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>().LifestyleTransient());
 
             }
         }
