@@ -156,12 +156,19 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(DelayedRegionCreationBehavior), typeof(DelayedRegionCreationBehavior), false);                
                 
                 // register region adapters
+<<<<<<< HEAD
                 Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>().LifestyleTransient());
-                    .Configure(c=>c.LifestyleTransient()));
 
                 // register region behaviors
                 Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>().LifestyleTransient());
+=======
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>()
+                    .Configure(c=>c.LifestyleTransient()));
+
+                // register region behaviors
+                Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>()
                     .Configure(c => c.LifestyleTransient()));
+>>>>>>> artema-master
 
             }
         }
