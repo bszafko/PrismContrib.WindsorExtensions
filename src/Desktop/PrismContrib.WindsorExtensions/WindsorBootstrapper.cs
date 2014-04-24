@@ -3,6 +3,7 @@ using System.Globalization;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
+using Microsoft.Practices.Prism.PubSubEvents;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Prism;
@@ -156,13 +157,10 @@ namespace PrismContrib.WindsorExtensions
                 RegisterTypeIfMissing(typeof(DelayedRegionCreationBehavior), typeof(DelayedRegionCreationBehavior), false);                
                 
                 // register region adapters
-                Container.Register(AllTypes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>().LifestyleTransient());
-                    .Configure(c=>c.LifestyleTransient()));
-
+                Container.Register(Classes.FromAssemblyContaining<IRegionAdapter>().BasedOn<IRegionAdapter>().LifestyleTransient());
+                
                 // register region behaviors
-                Container.Register(AllTypes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>().LifestyleTransient());
-                    .Configure(c => c.LifestyleTransient()));
-
+                Container.Register(Classes.FromAssemblyContaining<IRegionBehavior>().BasedOn<IRegionBehavior>().LifestyleTransient());
             }
         }
 
