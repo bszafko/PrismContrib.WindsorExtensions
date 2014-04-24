@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.PubSubEvents;
@@ -9,7 +8,6 @@ using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Prism;
 using Castle.Windsor;
 using Castle.MicroKernel;
-using Castle.Core;
 using Microsoft.Practices.Prism.Regions.Behaviors;
 using Castle.MicroKernel.Registration;
 using CommonServiceLocator.WindsorAdapter;
@@ -126,7 +124,6 @@ namespace PrismContrib.WindsorExtensions
 
             ExceptionExtensions.RegisterFrameworkExceptionType(
                 typeof(Castle.MicroKernel.ComponentNotFoundException));
-
         }
 
         /// <summary>
@@ -237,6 +234,5 @@ namespace PrismContrib.WindsorExtensions
                 }
             }
         }
-
     }
 }
