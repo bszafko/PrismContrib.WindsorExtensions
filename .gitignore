@@ -1,0 +1,8 @@
+/*.user
+/*.GhostDoc.xml
+/*.suo
+src/**/[Bb]in*/
+src/**/[Dd]ebug*/
+src/**/[Oo]bj*/
+TestResults
+/build
