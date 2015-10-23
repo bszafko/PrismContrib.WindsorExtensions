@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Globalization;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.PubSubEvents;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Prism;
 using Castle.Windsor;
 using Castle.MicroKernel;
-using Microsoft.Practices.Prism.Regions.Behaviors;
 using Castle.MicroKernel.Registration;
 using CommonServiceLocator.WindsorAdapter;
 
 namespace PrismContrib.WindsorExtensions
 {
+    using Prism;
+    using Prism.Events;
+    using Prism.Logging;
+    using Prism.Modularity;
+    using Prism.Regions;
+    using Prism.Regions.Behaviors;
+
     /// <summary>
     /// Base class that provides a basic bootstrapping sequence that
     /// registers most of the Composite Application Library assets
