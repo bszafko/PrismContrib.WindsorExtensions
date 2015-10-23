@@ -4,15 +4,15 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using PrismContrib.WindsorExtensions.Tests.Mocks;
-using Microsoft.Practices.Prism;
-using Microsoft.Practices.Prism.Logging;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Castle.Windsor;
 
 namespace PrismContrib.WindsorExtensions.Tests
 {
+    using Prism.Logging;
+    using Prism.Modularity;
+    using Prism.Regions;
+
     [TestClass]
     public class WindsorBootstrapperFixture 
     {

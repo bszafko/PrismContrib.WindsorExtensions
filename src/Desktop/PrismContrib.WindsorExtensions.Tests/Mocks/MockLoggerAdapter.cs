@@ -15,10 +15,11 @@
 // places, or events is intended or should be inferred.
 //===================================================================================
 using System.Collections.Generic;
-using Microsoft.Practices.Prism.Logging;
 
 namespace PrismContrib.WindsorExtensions.Tests.Mocks
 {
+    using Prism.Logging;
+
     internal class MockLoggerAdapter : ILoggerFacade
     {
         public IList<string> Messages = new List<string>();
