@@ -19,7 +19,7 @@
 	</Target>
 
 	<Target Name="Test">
-    <Exec Command='"$(VS110COMNTOOLS)..\IDE\mstest.exe" /testcontainer:"$(TestAssembly)"' />
+    <Exec Command='"mstest.exe" /testcontainer:"$(TestAssembly)"' />
 	</Target>
 
 	<Target Name="Package" DependsOnTargets="Deploy; PackageZip; PackageNuPack" />
