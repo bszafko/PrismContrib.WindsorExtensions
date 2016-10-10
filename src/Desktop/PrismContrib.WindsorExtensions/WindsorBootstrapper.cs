@@ -4,7 +4,8 @@ using Microsoft.Practices.ServiceLocation;
 using Castle.Windsor;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
-using CommonServiceLocator.WindsorAdapter;
+//using CommonServiceLocator.WindsorAdapter;
+using CommonServiceLocator.WindsorAdapter.Unofficial;
 
 namespace PrismContrib.WindsorExtensions
 {
